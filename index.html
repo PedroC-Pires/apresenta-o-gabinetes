@@ -51,28 +51,32 @@
                         <h2>&nbsp;</h2>
                         <div class="imagens">
                             <figure>
-                                <img src="./img/full tower.jpeg">
+                                <img src="./img/full tower.jpeg" onclick="mostrarInfo('full')">
                                 <figcaption>Full Tower</figcaption>
                             </figure>
                             <figure>
-                                <img src="./img/mid tower.jpg">
+                                <img src="./img/mid tower.jpg" onclick="mostrarInfo('mid')">
                                 <figcaption>Mid Tower</figcaption>
                             </figure>
                             <figure>
-                                <img src="./img/mini tower.webp">
+                                <img src="./img/mini tower.webp" onclick="mostrarInfo('mini')">
                                 <figcaption>Mini Tower</figcaption>
                             </figure>
                             <figure>
-                                <img src="./img/small ff.webp">
+                                <img src="./img/small ff.webp" onclick="mostrarInfo('small')">
                                 <figcaption>Small Form Factor</figcaption>
                             </figure>
                             <figure>
-                                <img src="./img/open case.png">
+                                <img src="./img/open case.png" onclick="mostrarInfo('open')">
                                 <figcaption>Open Case</figcaption>
                             </figure>
                         </div>
                     </div>
                 </div>
+                <dialog id="modal">
+                    <p id="modal-info"></p>
+                    <button onclick="fecharModal()">Fechar</button>
+                </dialog>
             </section>
             <section class="s4">
                 <div class="linha">
@@ -133,4 +137,23 @@
             </section>
         </main>
     </body>
+    <script>
+        function mostrarInfo(tipo) {
+            const modal = document.getElementById('modal');
+            const modalInfo = document.getElementById('modal-info');
+            const textos = {
+                full: "<h1>Full Tower</h1><ul><li>Suporte a placas-mãe E-ATX, ATX e menores.</li><li>Espaço para múltiplas GPUs e sistemas de refrigeração líquida.</li><li>8 a 10 slots PCIe e várias baias de 3,5'' e 2,5''.</li><li>Conexões USB 3.0, USB-C e controladores integrados.</li></ul>",
+                mid: "<h1>Mid Tower</h1><ul><li>Compatível com placas-mãe ATX, Micro-ATX e Mini-ITX.</li><li>Até 7 slots PCIe e baias de 3,5'' e 2,5''.</li><li>Opções de refrigeração líquida e filtros de poeira removíveis.</li><li>Ideal para gamers e setups equilibrados.</li></ul>",
+                mini: "<h1>Mini Tower</h1><ul><li>Compatível com placas-mãe Micro-ATX e Mini-ITX.</li><li>Até 4 slots PCIe e espaço limitado para armazenamento.</li><li>Perfeito para setups compactos e escritórios.</li></ul>",
+                small: "<h1>Small Form Factor</h1><ul><li>Compatível com Mini-ITX e algumas Micro-ATX.</li><li>1 ou 2 slots PCIe e soluções de ventilação criativas.</li><li>Ideal para HTPCs e setups discretos.</li></ul>",
+                open: "<h1>Open Case</h1><ul><li>Estrutura aberta com excelente resfriamento.</li><li>Compatível com diversos formatos de placas-mãe.</li><li>Exposição a poeira e danos físicos.</li><li>Visual moderno e acesso facilitado a componentes.</li></ul>"
+            };
+            modalInfo.innerHTML = textos[tipo];
+            modal.showModal();
+        }
+
+        function fecharModal() {
+            document.getElementById('modal').close();
+        }
+    </script>
 </html>
